@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voor Sociale Partners - Samenwerken met Stapgesprek.nl (JobOn)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <header class="site-header"></header>
+
+    <main>
+         <section class="page-header light-bg">
+            <div class="container">
+                <h1>Samenwerken met Stapgesprek.nl</h1>
+                <p class="intro">Ondersteun (oud-)medewerkers van Tata Steel effectief bij hun volgende stap naar een toekomstbestendige loopbaan.</p>
+            </div>
+        </section>
+
+        <section class="partner-proposition">
+            <div class="container content-columns">
+                 <div class="content-text">
+                     <h2>Een Unieke Aanpak voor Impact</h2>
+                     <p>Stapgesprek.nl, mogelijk gemaakt door Stichting JobOn, biedt een bewezen effectieve, laagdrempelige en mensgerichte ondersteuning voor medewerkers die te maken krijgen met de reorganisatie bij Tata Steel. Wij zijn **geen reïntegratiebureau**, maar een **onafhankelijke, non-profit community en netwerkorganisatie**.</p>
+                     <p>Onze kracht ligt in de combinatie van:</p>
+                     <ul>
+                         <li><strong>Community & Peer Support:</strong> Deelnemers steunen en inspireren elkaar.</li>
+                         <li><strong>Vrijwillige Deelname:</strong> Hoge motivatie en eigen regie bij de deelnemer.</li>
+                         <li><strong>Professionele Begeleiding:</strong> Inzet van ervaren trainers, coaches en een groot vrijwilligersnetwerk.</li>
+                         <li><strong>Maatwerk & Flexibiliteit:</strong> Aanbod afgestemd op individuele behoeften en de specifieke context.</li>
+                         <li><strong>Focus op Toekomst:</strong> Oriëntatie op duurzame, kansrijke beroepen en sectoren.</li>
+                     </ul>
+                    <p>Wij fungeren als een waardevolle **aanvulling** op formele (sociaal plan) trajecten.</p>
+                </div>
+                 <div class="content-visual">
+                     <img src="images/partners-visual.jpg" alt="Professionele visualisatie van samenwerking of netwerk">
+                 </div>
+            </div>
+        </section>
+
+        <section class="partner-benefits accent-bg">
+            <div class="container">
+                <h2>Voordelen van Samenwerking</h2>
+                 <div class="benefits-grid">
+                     <div class="benefit-item">
+                         <img src="images/icon-experience.svg" alt="" class="offering-icon"> <h3>Bewezen Ervaring</h3>
+                         <p>JobOn heeft ruime ervaring met het begeleiden van grote groepen tijdens reorganisaties, ook bij lange dienstverbanden.</p>
+                     </div>
+                     <div class="benefit-item">
+                         <img src="images/icon-maatwerk.svg" alt="" class="offering-icon"> <h3>Flexibel & Maatwerk</h3>
+                         <p>We ontwikkelen programma's op maat, passend bij de behoeften van de medewerkers en de doelstellingen van partners.</p>
+                     </div>
+                     <div class="benefit-item">
+                          <img src="images/icon-future-proof.svg" alt="" class="offering-icon"> <h3>Focus op Toekomst</h3>
+                         <p>Actieve oriëntatie op kansrijke sectoren (energietransitie, techniek, zorg etc.) en benodigde skills.</p>
+                     </div>
+                     <div class="benefit-item">
+                          <img src="images/icon-cost-effective.svg" alt="" class="offering-icon"> <h3>Kosteneffectief</h3>
+                         <p>Onze non-profit structuur en vrijwilligersinzet maken impactvolle ondersteuning toegankelijk.</p>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+         <section class="collaboration-options">
+            <div class="container">
+                 <h2>Mogelijkheden voor Samenwerking</h2>
+                 <p>We gaan graag met u in gesprek (vakbonden, OR, HR, UWV, gemeente, opleiders, werkgevers) om te kijken hoe we samen de (oud-)medewerkers van Tata Steel optimaal kunnen ondersteunen. Denk aan:</p>
+                 <ul>
+                     <li>Financiering van (lokale) workshops, Stapgesprekken of specifieke trainingen.</li>
+                     <li>Promotie van het Stapgesprek.nl platform onder de doelgroep.</li>
+                     <li>Gezamenlijk organiseren van netwerkevenementen met regionale werkgevers.</li>
+                     <li>Delen van expertise over kansrijke sectoren en benodigde vaardigheden.</li>
+                     <li>Co-creatie van maatwerkprogramma's.</li>
+                 </ul>
+                 <div style="text-align: center; margin-top: 40px;">
+                    <a href="contact.html" class="btn btn-primary btn-large">Neem contact op voor een partnerschap</a>
+                 </div>
+            </div>
+         </section>
+
+    </main>
+
+    <footer class="site-footer"></footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
