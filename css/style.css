@@ -1,1 +1,12 @@
+/* --- CSS Variabelen --- */
+:root {
+    --color-primary: #6EC158; /* JobOn Groen */
+    /* ... (rest van CSS zoals eerder) ... */
+}
 
+/* --- Basis Reset & Stijlen --- */
+*, *::before, *::after {
+    /* ... (rest van CSS zoals eerder) ... */
+}
+
+/* ... (Alle andere CSS regels zoals eerder) ... */
