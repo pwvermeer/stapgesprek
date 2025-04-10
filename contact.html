@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Neem contact op met Stapgesprek.nl (JobOn)</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Contact - Neem contact op met Stapgesprek, een initiatief van stichting JobOn</title>
+    <link rel="stylesheet" href="css/style.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -25,12 +24,15 @@
             <div class="container contact-layout">
                 <div class="contact-form-wrapper">
                     <h2>Stuur ons een bericht</h2>
-                     <form id="contact-form" action="#" method="post"> <div class="form-group">
-                            <label for="name">Naam</label>
+                     <form id="contact-form" action="https://formspree.io/f/xwplaaaa" method="POST">
+                         <input type="hidden" name="_subject" value="Contactformulier Stapgesprek.nl">
+
+                        <div class="form-group">
+                            <label for="name">Naam*</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mailadres</label>
+                            <label for="email">E-mailadres*</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
@@ -38,11 +40,12 @@
                             <input type="text" id="subject" name="subject">
                         </div>
                         <div class="form-group">
-                             <label for="message">Bericht</label>
+                             <label for="message">Bericht*</label>
                              <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
                          <div class="form-group">
-                            </div>
+                             <p id="contact-form-status" class="form-status"></p>
+                         </div>
                         <button type="submit" class="btn btn-primary">Verstuur Bericht</button>
                     </form>
                  </div>
@@ -51,21 +54,20 @@
                      <h2>Contactgegevens</h2>
                      <p><strong>Stichting JobOn / Stapgesprek.nl</strong></p>
                      <p>
-                         [Straatnaam + Nr]<br>
-                         [Postcode] [Plaats]
+                         [Adres JobOn]<br>
+                         [Postcode Plaats JobOn]
                      </p>
                      <p>
-                         <strong>E-mail:</strong> <a href="mailto:info@jobon.nl">info@jobon.nl</a> <br>
-                         <strong>Telefoon:</strong> <a href="tel:+31xxxxxxxxx">[Telefoonnummer JobOn]</a>
+                         <strong>E-mail (algemeen):</strong> <a href="mailto:info@jobon.nl">info@jobon.nl</a> <br>
+                         <strong>Telefoon:</strong> <a href="tel:06-44383888 (P.Vermeer)">[Telefoonnummer JobOn]</a>
                      </p>
                      <p>
                          Volg JobOn ook op: <br>
-                         <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
-                         <a href="#" target="_blank" rel="noopener noreferrer">Facebook</a> |
-                         <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+                         <a href="[https://www.linkedin.com/company/stichtingjobon/]" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+                         <a href="[https://www.linkedin.com/company/stichtingjobon/]" target="_blank" rel="noopener noreferrer">Facebook</a> |
+                         <a href="[https://www.linkedin.com/company/stichtingjobon/]" target="_blank" rel="noopener noreferrer">Instagram</a>
                      </p>
-                     <p>KVK-nummer: [Nummer]</p>
-                     <p>ANBI / RSIN: [Nummer]</p>
+                  
                  </aside>
 
             </div>
@@ -75,6 +77,5 @@
 
     <footer class="site-footer"></footer>
 
-    <script src="js/script.js"></script>
-</body>
+    <script src="js/script.js"></script> </body>
 </html>
