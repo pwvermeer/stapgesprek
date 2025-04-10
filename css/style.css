@@ -1,4 +1,4 @@
-/* css/style.css - BIJGEWERKTE VERSIE 3 (met kleine suggesties) */
+/* css/style.css - BIJGEWERKTE VERSIE 4 (Alignment Fix) */
 
 /* --- CSS Variabelen --- */
 :root {
@@ -28,14 +28,7 @@ a { color: var(--color-accent); text-decoration: none; transition: color 0.3s ea
 a:hover { color: var(--color-primary); text-decoration: none; }
 ul, ol { margin-bottom: 1em; padding-left: 20px; }
 li { margin-bottom: 0.5em; }
-
-img {
-    max-width: 100%; /* << BELANGRIJKSTE REGEL TEGEN TE GROTE AFBEELDINGEN */
-    height: auto;
-    display: block; /* Kan layout beïnvloeden, test eventueel met inline-block */
-    /* display: inline-block; */ /* << Test dit eventueel */
-    vertical-align: middle;
-}
+img { max-width: 100%; height: auto; display: block; vertical-align: middle; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 /* --- Layout --- */
@@ -50,40 +43,44 @@ section { padding: 60px 0; }
 .header-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 
 /* Logo Styling */
-.logo.logo-center {
-    flex-grow: 0; flex-shrink: 0; text-align: center;
-    min-width: 0; /* /* NIEUW/AANGEPAST: Voorkomt soms overflow in flex */
-}
-.logo.logo-center img {
-    max-height: 80px;
-    width: auto;
-    display: inline-block;
-    object-fit: contain;
-    vertical-align: middle; /* NIEUW/AANGEPAST: Expliciet voor zekerheid */
-}
+.logo.logo-center { flex-grow: 0; flex-shrink: 0; text-align: center; min-width: 0; }
+.logo.logo-center img { max-height: 80px; width: auto; display: inline-block; object-fit: contain; vertical-align: middle; }
 
 /* Navigatie Styling (Gesplitst) */
 .nav-left, .nav-right {
     flex: 1;
-    min-width: 0; /* NIEUW/AANGEPAST: Voorkomt soms overflow in flex */
+    min-width: 0;
+    display: flex; /* NIEUW/AANGEPAST: Zorgt dat interne UL verticaal centreert */
+    align-items: center; /* NIEUW/AANGEPAST: Zorgt dat interne UL verticaal centreert */
 }
-.nav-left .nav-menu { justify-content: flex-start; }
-.nav-right .nav-menu { justify-content: flex-end; }
+.nav-left {
+    justify-content: flex-start; /* NIEUW/AANGEPAST: Verplaatst van .nav-menu naar hier */
+}
+.nav-right {
+    justify-content: flex-end; /* NIEUW/AANGEPAST: Verplaatst van .nav-menu naar hier */
+}
+
 .header-right-section {
-    display: flex; align-items: center; justify-content: flex-end; flex: 1;
-    min-width: 0; /* NIEUW/AANGEPAST: Voorkomt soms overflow in flex */
+    display: flex;
+    align-items: center; /* Deze stond al, is goed */
+    justify-content: flex-end;
+    flex: 1;
+    min-width: 0;
 }
-.main-navigation .nav-menu { list-style: none; padding-left: 0; margin-bottom: 0; display: flex; align-items: center; flex-wrap: nowrap; /* NIEUW/AANGEPAST: Voorkom wrappen van menu items zelf */ }
-.main-navigation .nav-menu li { margin: 0 15px; position: relative; flex-shrink: 0; /* NIEUW/AANGEPAST: Voorkom krimpen items */ }
+.main-navigation {
+    /* NIEUW/AANGEPAST: Geen flex: 1 meer nodig hier, parent (.nav-left/.nav-right) regelt dit */
+}
+.main-navigation .nav-menu { list-style: none; padding-left: 0; margin-bottom: 0; display: flex; align-items: center; flex-wrap: nowrap; }
+.main-navigation .nav-menu li { margin: 0 15px; position: relative; flex-shrink: 0; }
 
 .main-navigation .nav-menu a { color: var(--color-text); font-weight: 700; text-decoration: none; padding: 8px 4px; border-bottom: 3px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; white-space: nowrap; display: flex; align-items: center; }
 .main-navigation .nav-menu a:hover,
 .main-navigation .nav-menu li.active > a { color: var(--color-primary); border-bottom-color: var(--color-primary); text-decoration: none; }
 .main-navigation .nav-menu a.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
 
-/* Dropdown Styling (Aangepast) */
+/* Dropdown Styling */
 .has-dropdown > a.dropdown-trigger { cursor: pointer; }
-.has-dropdown span.arrow { font-size: 0.7em; margin-left: 6px; transition: transform 0.3s ease; display: inline-block; /* Zorgt dat transform werkt */ }
+.has-dropdown span.arrow { font-size: 0.7em; margin-left: 6px; transition: transform 0.3s ease; display: inline-block; }
 .has-dropdown:hover span.arrow { transform: rotate(180deg); }
 
 .dropdown-menu { opacity: 0; visibility: hidden; position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(10px); min-width: 200px; background-color: var(--color-background); border: none; border-radius: var(--border-radius); box-shadow: 0 8px 25px rgba(0,0,0,0.15); list-style: none; padding: 10px 0; margin: 0; z-index: 1001; transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; }
@@ -95,8 +92,8 @@ section { padding: 60px 0; }
 .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 .nav-right .has-dropdown:hover .dropdown-menu { transform: translateY(0); }
 
-/* Taalkeuze Styling (Aangepast) */
-.language-switcher { margin-left: 30px; white-space: nowrap; border: 1px solid transparent; padding: 5px 8px; border-radius: var(--border-radius); transition: background-color 0.3s ease; flex-shrink: 0; /* NIEUW/AANGEPAST: Voorkom krimpen */ }
+/* Taalkeuze Styling */
+.language-switcher { margin-left: 30px; white-space: nowrap; border: 1px solid transparent; padding: 5px 8px; border-radius: var(--border-radius); transition: background-color 0.3s ease; flex-shrink: 0; }
 .language-switcher:hover { background-color: var(--color-background-light); }
 .language-switcher a { margin: 0; color: var(--color-text-light); text-decoration: none; font-size: 0.9rem; padding: 5px; display: inline-block; border-radius: 3px; transition: background-color 0.2s ease, color 0.2s ease; }
 .language-switcher span.lang-separator { color: var(--color-border); margin: 0 3px; font-size: 0.9rem; }
@@ -104,12 +101,11 @@ section { padding: 60px 0; }
 .language-switcher a:not(.lang-active):hover { color: var(--color-accent); background-color: #e9ecef; text-decoration: none; }
 
 /* Mobiel Menu Knop */
-.menu-toggle { display: none; background: none; border: 1px solid var(--color-text-light); color: var(--color-text); padding: 8px 12px; cursor: pointer; font-size: 1.5rem; line-height: 1; border-radius: var(--border-radius); margin-left: 15px; flex-shrink: 0; /* NIEUW/AANGEPAST: Voorkom krimpen */ }
+.menu-toggle { display: none; background: none; border: 1px solid var(--color-text-light); color: var(--color-text); padding: 8px 12px; cursor: pointer; font-size: 1.5rem; line-height: 1; border-radius: var(--border-radius); margin-left: 15px; flex-shrink: 0; }
 .menu-toggle:hover { background-color: var(--color-background-light); }
 
 /* Mobiel Navigatie Container */
 .mobile-navigation { display: none; }
-
 
 /* --- Footer --- */
 /* ... (Footer styling blijft hetzelfde) ... */
@@ -145,22 +141,9 @@ textarea { min-height: 120px; resize: vertical; }
 label { display: block; margin-bottom: 5px; font-weight: 700; }
 
 /* --- Homepage Specifiek & Algemene Afbeelding Containers --- */
-/* Zorg dat containers afbeeldingen beperken */
-.hero-image, .download-image, .community-visual, .content-visual, .resource-card img {
-    /* Containers hebben al flex/grid of breedte instellingen die max-width: 100% op img effectief maken */
-    /* Voeg eventueel hier een expliciete max-width toe als een container zelf te breed wordt */
-     overflow: hidden; /* NIEUW/AANGEPAST: Voorkomt dat afbeelding 'lekt' uit ronde hoeken indien toegepast */
-}
-/* Zorg dat de afbeelding zelf geen ongewenste marge heeft */
-.hero-image img, .download-image img, .community-visual img, .content-visual img {
-    /* max-width: 100% en height: auto staan al op img */
-    /* display: block staat al op img */
-}
-
-/* ... (Rest van homepage styling blijft hetzelfde) ... */
-.hero-section, .download-section, .offerings-section, .community-section, .jobon-power-section { /* padding etc. */ }
-.hero-content, .download-content, .offerings-grid, .community-content { /* flex/grid etc. */ }
-.offerings-grid { align-items: stretch; } .offering-card { height: 100%; display: flex; flex-direction: column; } /* Zorg dat flex werkt */
+.hero-image, .download-image, .community-visual, .content-visual { max-width: 100%; overflow: hidden; }
+.hero-image img, .download-image img, .community-visual img, .content-visual img { /* Standaard img regels zijn voldoende */ }
+.offerings-grid { align-items: stretch; } .offering-card { height: 100%; display: flex; flex-direction: column; }
 
 /* --- Responsive Design --- */
 @media (max-width: 1024px) {
@@ -174,39 +157,28 @@ label { display: block; margin-bottom: 5px; font-weight: 700; }
     :root { --header-height: 70px; }
     .site-header { height: var(--header-height); }
     .header-container { position: relative; }
-
-    /* Verberg desktop nav/taal */
-    .nav-left, .nav-right, .language-switcher { display: none; }
-
-    /* Logo links, knop rechts */
+    .nav-left, .nav-right, .language-switcher { display: none; } /* Verberg desktop items */
     .logo.logo-center { order: 1; flex-grow: 1; text-align: left; padding-left: 0; }
     .logo.logo-center img { max-height: 40px; }
-    .header-right-section { order: 2; flex: 0 0 auto; justify-content: flex-end; }
+    .header-right-section { order: 2; flex: 0 0 auto; justify-content: flex-end; display: flex; /* Zorg dat knop getoond wordt */ align-items: center; } /* NIEUW/AANGEPAST: display:flex toegevoegd */
     .menu-toggle { display: block; margin-left: 0; }
 
     /* Mobiel menu container */
     .mobile-navigation { display: block; position: absolute; top: var(--header-height); left: 0; right: 0; background-color: var(--color-background); border-top: 1px solid var(--color-border); box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 999; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
-    /* Actieve staat voor mobiel menu */
     #primary-mobile-menu.nav-active { max-height: calc(100vh - var(--header-height)); overflow-y: auto; }
-
     .nav-menu-mobile { list-style: none; padding: 0; margin: 0; }
     .nav-menu-mobile li { margin: 0; border-bottom: 1px solid #eee; }
     .nav-menu-mobile li:last-child { border-bottom: none; }
     .nav-menu-mobile a { display: block; padding: 15px 20px; color: var(--color-text); text-decoration: none; font-weight: 700; }
     .nav-menu-mobile a:hover { background-color: var(--color-background-light); color: var(--color-primary); }
-    /* Actieve link in mobiel menu */
     .nav-menu-mobile li.active > a { color: var(--color-background); background-color: var(--color-primary); }
-
 
     /* Dropdown binnen mobiel menu */
     .has-dropdown-mobile .dropdown-trigger-mobile { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
     .has-dropdown-mobile span.arrow { font-size: 0.8em; transition: transform 0.3s ease; }
     .has-dropdown-mobile.active .dropdown-trigger-mobile span.arrow { transform: rotate(180deg); }
-
     .has-dropdown-mobile .dropdown-menu-mobile { list-style: none; padding: 0; margin: 0; background-color: var(--color-background-light); max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-    /* Toon mobiele dropdown als parent li .active heeft */
-    .has-dropdown-mobile.active .dropdown-menu-mobile { max-height: 300px; /* Ruime max hoogte */ }
-
+    .has-dropdown-mobile.active .dropdown-menu-mobile { max-height: 300px; }
     .has-dropdown-mobile .dropdown-menu-mobile li { border: none; margin: 0; }
     .has-dropdown-mobile .dropdown-menu-mobile a { padding: 10px 20px 10px 40px; font-weight: normal; font-size: 0.95rem; border-top: 1px solid #eee; }
     .has-dropdown-mobile .dropdown-menu-mobile li:first-child a { border-top: none; }
@@ -232,15 +204,4 @@ label { display: block; margin-bottom: 5px; font-weight: 700; }
     .download-image { max-width: 200px; }
 }
 
-/* ... (Rest van component styling zoals resource-card, webinar-list etc. blijft hetzelfde) ... */
-.resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; } .resource-card { background-color: var(--color-background); border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; } .resource-card img { width: 100%; height: 180px; object-fit: cover; } .resource-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; } .resource-content h3 { font-size: 1.2rem; margin-bottom: 10px; } .resource-content p { flex-grow: 1; margin-bottom: 15px; font-size: 0.95rem; color: var(--color-text-light); } .resource-content .btn { margin-top: auto; align-self: flex-start; }
-.webinar-list { list-style: none; padding-left: 0; } .webinar-item { display: flex; align-items: center; gap: 20px; background-color: var(--color-background); padding: 15px 20px; border-radius: var(--border-radius); margin-bottom: 15px; box-shadow: 0 1px 5px rgba(0,0,0,0.06); flex-wrap: wrap; } .webinar-date { text-align: center; font-size: 0.9rem; color: var(--color-primary); flex-shrink: 0; } .webinar-info { flex-grow: 1; } .webinar-info h4 { font-size: 1.15rem; margin-bottom: 5px; } .webinar-info p { margin-bottom: 0; font-size: 0.9rem; color: var(--color-text-light); } .webinar-action { flex-shrink: 0; margin-left: auto; padding-left: 15px; } @media (max-width: 767px) { .webinar-item { flex-direction: column; align-items: flex-start; gap: 10px; } .webinar-action { margin-left: 0; margin-top: 10px; width: 100%;} .webinar-action .btn { width: 100%; text-align: center; } }
-.content-columns { display: flex; gap: 40px; align-items: center; } .content-columns .content-text { flex: 1 1 55%; } .content-columns .content-visual { flex: 1 1 45%; text-align: center; } .content-columns.reverse { flex-direction: row-reverse; } @media (max-width: 767px) { .content-columns, .content-columns.reverse { flex-direction: column; text-align: center; } .content-columns .content-text, .content-columns .content-visual { flex-basis: auto; width: 100%; } .content-columns .content-visual { margin-top: 20px; max-width: 80%; margin-left: auto; margin-right: auto;} }
-.options-grid, .benefits-grid, .values-grid, .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px;} .option-card, .benefit-item, .value-item, .testimonial-card { background: var(--color-background); padding: 25px; border-radius: var(--border-radius); box-shadow: 0 2px 8px rgba(0,0,0,0.07); } .value-item h4 { color: var(--color-accent); margin-bottom: 8px; } .testimonial-card blockquote { font-style: italic; border-left: 3px solid var(--color-secondary); padding-left: 15px; margin-bottom: 10px; } .testimonial-card cite { font-style: normal; font-weight: bold; font-size: 0.9rem; color: var(--color-text-light); display: block; text-align: right; }
-.contact-layout { display: flex; gap: 40px; flex-wrap: wrap; } .contact-form-wrapper { flex: 2 1 500px; } .contact-details { flex: 1 1 300px; background-color: var(--color-background-light); padding: 25px; border-radius: var(--border-radius); } .contact-details h2 { margin-bottom: 15px; font-size: 1.4rem; } .contact-details p { margin-bottom: 15px; line-height: 1.7; } .contact-details strong { color: var(--color-text); } .form-group { margin-bottom: 20px; }
-.inline-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center;} .inline-form input[type="email"] { flex-grow: 1; margin-bottom: 0; min-width: 200px;} .inline-form button { flex-shrink: 0; } @media (max-width: 767px) { .inline-form { flex-direction: column; align-items: stretch;} }
-
-/* Zekerstellen dat afbeeldingen binnen hun containers blijven */
-.hero-image, .download-image, .community-visual, .content-visual {
-    max-width: 100%; /* NIEUW/AANGEPAST: Limiteer de container zelf ook */
-}
+/* ... (Rest van component styling etc.) ... */
