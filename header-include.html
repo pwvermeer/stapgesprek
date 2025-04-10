@@ -1,25 +1,24 @@
 <div class="container header-container">
 
     <nav class="main-navigation nav-left">
-        <ul class="nav-menu">
-            <li><a href="voor-jou.html">Voor Jou (Tata Steel)</a></li>
+        <ul id="nav-menu-left" class="nav-menu"> <li><a href="voor-jou.html">Voor Jou (Tata Steel)</a></li>
             <li><a href="stapgesprek.html">Het Stapgesprek</a></li>
             <li><a href="online-leren.html">Online Leren</a></li>
         </ul>
     </nav>
 
     <div class="logo logo-center">
-        <a href="index.html">
-            <img src="images/logo-jobon-stapgesprek.png" alt="Stapgesprek.nl - Powered by JobOn - Ga naar Home">
+        <a href="index.html" aria-label="Stapgesprek.nl Home">
+            <img src="images/logo-jobon-stapgesprek.png" alt="Stapgesprek.nl - Powered by JobOn">
         </a>
     </div>
 
     <div class="header-right-section">
         <nav class="main-navigation nav-right">
-            <ul class="nav-menu">
-                <li><a href="community.html">Community</a></li>
+            <ul id="nav-menu-right" class="nav-menu"> <li><a href="community.html">Community</a></li>
                 <li class="has-dropdown">
-                    <a href="#" aria-haspopup="true">Info ▼</a> <ul class="dropdown-menu" aria-label="Info menu">
+                    <a href="#" aria-haspopup="true" class="dropdown-trigger">Info<span class="arrow">▼</span></a>
+                    <ul class="dropdown-menu" aria-label="Info menu">
                         <li><a href="voor-partners.html">Voor Partners</a></li>
                         <li><a href="over-jobon.html">Over JobOn</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -33,18 +32,16 @@
             <span class="lang-separator">|</span>
             <a href="#">EN</a>
         </div>
-         <button class="menu-toggle" aria-controls="primary-mobile-menu" aria-expanded="false">☰</button>
-    </div>
+         <button class="menu-toggle" aria-controls="primary-mobile-menu" aria-expanded="false">☰</button> </div>
 
      <nav class="mobile-navigation">
         <ul id="primary-mobile-menu" class="nav-menu-mobile">
-             <li><a href="voor-jou.html">Voor Jou (Tata Steel)</a></li>
+            <li><a href="voor-jou.html">Voor Jou (Tata Steel)</a></li>
             <li><a href="stapgesprek.html">Het Stapgesprek</a></li>
             <li><a href="online-leren.html">Online Leren</a></li>
             <li><a href="community.html">Community</a></li>
             <li class="has-dropdown-mobile">
-                 <a href="#">Info</a> <ul class="dropdown-menu-mobile">
-                    <li><a href="voor-partners.html">Voor Partners</a></li>
+                 <a href="#" class="dropdown-trigger-mobile">Info<span class="arrow">▼</span></a> <ul class="dropdown-menu-mobile" style="display: none;"> <li><a href="voor-partners.html">Voor Partners</a></li>
                     <li><a href="over-jobon.html">Over JobOn</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
