@@ -1,4 +1,4 @@
-// js/script.js - VERSIE 3 (met Modal & Formspree)
+// js/script.js - VERSIE 4 (met Download Modal + AI Coach Modal)
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -31,48 +31,132 @@ document.addEventListener('DOMContentLoaded', function() {
     const setActiveNavLink = () => { const headerElement = document.querySelector('header.site-header'); if (!headerElement) return; const currentPath = window.location.pathname.split('/').pop(); const currentPage = (currentPath === '' || currentPath === 'index.html') ? 'index.html' : currentPath; const navLinks = headerElement.querySelectorAll('.nav-left a, .nav-right a, .nav-menu-mobile a'); navLinks.forEach(link => { const linkPath = link.getAttribute('href').split('/').pop(); const linkPage = (linkPath === '' || linkPath === 'index.html') ? 'index.html' : linkPath; link.classList.remove('active'); if(link.parentElement) link.parentElement.classList.remove('active'); if (linkPage === currentPage && !link.classList.contains('dropdown-trigger') && !link.classList.contains('dropdown-trigger-mobile') ) { link.classList.add('active'); if(link.closest('li')) link.closest('li').classList.add('active'); } }); };
 
     // --- Download Modal Functionaliteit ---
-    const modal = document.getElementById('download-modal');
-    const openModalBtn = document.getElementById('open-download-modal-btn');
-    const closeModalBtns = document.querySelectorAll('.modal-close');
-    const emailInputHP = document.getElementById('email-download-hp');
-    const emailErrorHP = document.getElementById('email-error-hp');
-    const modalEmailDisplay = document.getElementById('modal-email-display');
-    const modalEmailInput = document.getElementById('modal-email-input');
-    const modalForm = document.getElementById('modal-download-form');
-    const modalFormError = document.getElementById('modal-form-error');
-    const successModal = document.getElementById('download-success');
+    const downloadModal = document.getElementById('download-modal');
+    const openDownloadModalBtn = document.getElementById('open-download-modal-btn');
+    const downloadEmailInputHP = document.getElementById('email-download-hp');
+    const downloadEmailErrorHP = document.getElementById('email-error-hp');
+    const downloadModalEmailDisplay = document.getElementById('modal-email-display');
+    const downloadModalEmailInput = document.getElementById('modal-email-input');
+    const downloadModalForm = document.getElementById('modal-download-form');
+    const downloadModalFormError = document.getElementById('modal-form-error');
+    const downloadSuccessModal = document.getElementById('download-success');
 
-    const openModal = () => { const emailValue = emailInputHP.value.trim(); if (emailValue && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) { emailErrorHP.style.display = 'none'; if (modalEmailDisplay) modalEmailDisplay.textContent = emailValue; if (modalEmailInput) modalEmailInput.value = emailValue; if (modal) modal.classList.add('modal-active'); } else { emailErrorHP.style.display = 'block'; emailInputHP.focus(); } };
-    const closeAllModals = () => { if (modal) modal.classList.remove('modal-active'); if (successModal) successModal.style.display = 'none'; if(successModal) successModal.classList.remove('modal-active'); if(modalForm) modalForm.reset(); if(modalFormError) modalFormError.style.display = 'none'; };
-    if (openModalBtn) { openModalBtn.addEventListener('click', openModal); }
-    if (emailInputHP) { emailInputHP.addEventListener('keypress', function(event) { if (event.key === "Enter") { event.preventDefault(); openModalBtn.click(); } }); }
-    closeModalBtns.forEach(btn => { btn.addEventListener('click', closeAllModals); });
-    if (modal) { modal.addEventListener('click', function(event) { if (event.target === modal) { closeAllModals(); } }); }
-    if (successModal) { successModal.addEventListener('click', function(event) { if (event.target === successModal) { closeAllModals(); } }); }
+    const openDownloadModal = () => { const emailValue = downloadEmailInputHP.value.trim(); if (emailValue && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) { downloadEmailErrorHP.style.display = 'none'; if (downloadModalEmailDisplay) downloadModalEmailDisplay.textContent = emailValue; if (downloadModalEmailInput) downloadModalEmailInput.value = emailValue; if (downloadModal) downloadModal.classList.add('modal-active'); } else { downloadEmailErrorHP.style.display = 'block'; downloadEmailInputHP.focus(); } };
 
-    // --- Formspree Formulier Verzenden ---
-    if (modalForm) {
-        modalForm.addEventListener("submit", function(event) {
+    if (openDownloadModalBtn) { openDownloadModalBtn.addEventListener('click', openDownloadModal); }
+    if (downloadEmailInputHP) { downloadEmailInputHP.addEventListener('keypress', function(event) { if (event.key === "Enter") { event.preventDefault(); openDownloadModalBtn.click(); } }); }
+
+    // Formspree submission for Download Modal
+    if (downloadModalForm) {
+        downloadModalForm.addEventListener("submit", function(event) {
             event.preventDefault();
-            const submitButton = modalForm.querySelector('button[type="submit"]'); const originalButtonText = submitButton.textContent; submitButton.disabled = true; submitButton.textContent = 'Bezig met verzenden...'; if(modalFormError) modalFormError.style.display = 'none';
-            const formData = new FormData(modalForm); const formAction = modalForm.action;
+            const submitButton = downloadModalForm.querySelector('button[type="submit"]'); const originalButtonText = submitButton.textContent; submitButton.disabled = true; submitButton.textContent = 'Bezig met verzenden...'; if(downloadModalFormError) downloadModalFormError.style.display = 'none';
+            const formData = new FormData(downloadModalForm); const formAction = downloadModalForm.action;
             fetch(formAction, { method: "POST", body: formData, headers: { 'Accept': 'application/json' } })
             .then(response => {
                 submitButton.disabled = false; submitButton.textContent = originalButtonText;
                 if (response.ok) {
-                    closeAllModals(); if(successModal) successModal.style.display = 'block'; if(successModal) successModal.classList.add('modal-active'); emailInputHP.value = '';
+                    closeAllModals(); if(downloadSuccessModal) downloadSuccessModal.style.display = 'block'; if(downloadSuccessModal) downloadSuccessModal.classList.add('modal-active'); downloadEmailInputHP.value = ''; // Maak initiele veld leeg
                 } else {
-                    response.json().then(data => {
-                        if (modalFormError) { if (data.errors) { modalFormError.textContent = data.errors.map(error => error.message).join(", "); } else { modalFormError.textContent = "Er is iets misgegaan bij het verzenden. Probeer het opnieuw."; } modalFormError.style.display = 'block'; }
-                        else { console.error("Form submission error, but no error display element found."); alert("Er is iets misgegaan bij het verzenden."); }
-                    })
+                    response.json().then(data => { if (downloadModalFormError) { if (data.errors) { downloadModalFormError.textContent = data.errors.map(error => error.message).join(", "); } else { downloadModalFormError.textContent = "Er is iets misgegaan bij het verzenden. Probeer het opnieuw."; } downloadModalFormError.style.display = 'block'; } else { console.error("Form submission error (Download Modal)"); alert("Er is iets misgegaan."); }})
                 }
-            }).catch(error => {
-                 submitButton.disabled = false; submitButton.textContent = originalButtonText;
-                 if (modalFormError) { modalFormError.textContent = "Kon formulier niet verzenden. Controleer je internetverbinding."; modalFormError.style.display = 'block'; }
-                 else { console.error('Form submission fetch error:', error); alert("Kon formulier niet verzenden."); }
-            });
+            }).catch(error => { submitButton.disabled = false; submitButton.textContent = originalButtonText; if (downloadModalFormError) { downloadModalFormError.textContent = "Kon formulier niet verzenden. Controleer je internetverbinding."; downloadModalFormError.style.display = 'block'; } else { console.error('Form submission fetch error:', error); alert("Kon formulier niet verzenden."); } });
         });
     }
+
+    // --- NIEUW: AI Coach Modal Functionaliteit ---
+    const aiCoachModal = document.getElementById('ai-coach-modal');
+    const openAICoachModalBtn = document.getElementById('open-ai-coach-modal-btn');
+    const aiCoachEmailInput = document.getElementById('ai-email'); // Het email veld IN de modal
+    const aiCoachForm = document.getElementById('ai-coach-form');
+    const aiCoachFormError = document.getElementById('ai-coach-form-error');
+    const aiCoachSuccessModal = document.getElementById('ai-coach-success');
+
+    const openAICoachModal = () => {
+         // Reset form state
+         if(aiCoachForm) aiCoachForm.reset();
+         if(aiCoachFormError) aiCoachFormError.style.display = 'none';
+         // Open modal
+         if(aiCoachModal) aiCoachModal.classList.add('modal-active');
+    };
+
+    if (openAICoachModalBtn) {
+        openAICoachModalBtn.addEventListener('click', openAICoachModal);
+    }
+
+    // Formspree submission for AI Coach Modal
+    if (aiCoachForm) {
+        aiCoachForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Basic validation for required email in AI Coach form
+            if (!aiCoachEmailInput || !aiCoachEmailInput.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(aiCoachEmailInput.value.trim())) {
+                 if(aiCoachFormError) {
+                     aiCoachFormError.textContent = "Voer een geldig e-mailadres in.";
+                     aiCoachFormError.style.display = 'block';
+                 }
+                 if(aiCoachEmailInput) aiCoachEmailInput.focus();
+                 return; // Stop submission
+            }
+
+            const submitButton = aiCoachForm.querySelector('button[type="submit"]'); const originalButtonText = submitButton.textContent; submitButton.disabled = true; submitButton.textContent = 'Bezig met verzenden...'; if(aiCoachFormError) aiCoachFormError.style.display = 'none';
+            const formData = new FormData(aiCoachForm); const formAction = aiCoachForm.action;
+
+            fetch(formAction, { method: "POST", body: formData, headers: { 'Accept': 'application/json' } })
+            .then(response => {
+                submitButton.disabled = false; submitButton.textContent = originalButtonText;
+                if (response.ok) {
+                    closeAllModals(); // Sluit AI Coach Modal
+                    if(aiCoachSuccessModal) aiCoachSuccessModal.style.display = 'block'; // Toon AI Coach Succes
+                    if(aiCoachSuccessModal) aiCoachSuccessModal.classList.add('modal-active');
+                } else {
+                     response.json().then(data => { if (aiCoachFormError) { if (data.errors) { aiCoachFormError.textContent = data.errors.map(error => error.message).join(", "); } else { aiCoachFormError.textContent = "Er is iets misgegaan bij het verzenden. Probeer het opnieuw."; } aiCoachFormError.style.display = 'block'; } else { console.error("Form submission error (AI Coach Modal)"); alert("Er is iets misgegaan."); }})
+                }
+            }).catch(error => { submitButton.disabled = false; submitButton.textContent = originalButtonText; if (aiCoachFormError) { aiCoachFormError.textContent = "Kon formulier niet verzenden. Controleer je internetverbinding."; aiCoachFormError.style.display = 'block'; } else { console.error('Form submission fetch error:', error); alert("Kon formulier niet verzenden."); } });
+        });
+    }
+
+
+    // --- Algemene Modal Sluit Functie ---
+    const closeAllModals = () => {
+        const allModals = document.querySelectorAll('.modal'); // Selecteer ALLE modals
+        allModals.forEach(m => {
+             m.classList.remove('modal-active');
+             // Kleine delay om fade-out effect toe te staan voordat display:none wordt gezet
+             setTimeout(() => {
+                // Alleen verbergen als het NIET de succes modal is die we net misschien hebben geopend
+                if (!m.classList.contains('modal-active')) {
+                     // Reset display alleen als de class er echt af is
+                     if(m.id !== 'download-success' && m.id !== 'ai-coach-success') {
+                        m.style.display = 'none';
+                     } else if (m.style.display === 'block' && !m.classList.contains('modal-active') ) {
+                         // Verberg succesmodal alleen als hij niet actief is
+                          m.style.display = 'none';
+                     }
+                }
+             }, 300); // Match transitie duur
+        });
+
+        // Reset forms binnen de modals
+        if(downloadModalForm) downloadModalForm.reset();
+        if(downloadModalFormError) downloadModalFormError.style.display = 'none';
+        if(aiCoachForm) aiCoachForm.reset();
+        if(aiCoachFormError) aiCoachFormError.style.display = 'none';
+        if(downloadEmailErrorHP) downloadEmailErrorHP.style.display = 'none'; // Reset ook initiele error
+
+    };
+
+    // Event listeners voor alle sluitknoppen (nu generieker)
+    document.addEventListener('click', function(event){
+        // Sluitknop binnen een modal?
+        if(event.target.matches('.modal-close')) {
+            closeAllModals();
+        }
+        // Klik op overlay?
+        if(event.target.matches('.modal')) {
+            closeAllModals();
+        }
+    });
+
 
 }); // Einde DOMContentLoaded
