@@ -15,19 +15,19 @@
 
     <main>
         <section class="hero-section">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <h1>Verandering bij Tata Steel? Stapgesprek helpt je verder.</h1>
-                    <p class="intro">Ingrijpende tijden vragen om een luisterend oor en een helder plan. Stapgesprek, een initiatief van Stichting JobOn, biedt jou als (oud-)medewerker van Tata Steel gratis en vrijwillige ondersteuning. Ontdek je mogelijkheden met een oriënterend Stapgesprek (vol is vol), praktische tools en de kracht van een netwerk.</p>
-                    <div class="hero-cta">
-                        <a href="voor-jou.html" class="btn btn-primary">Ontdek ons aanbod voor jou</a>
-                        <a href="stapgesprek.html" class="btn btn-secondary">Meer over het Stapgesprek</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="images/hero-image-stap.png" alt="Hoopvol beeld van mensen die samenwerken of vooruit kijken">
-                </div>
-            </div>
+             <div class="container hero-content">
+                 <div class="hero-text">
+                     <h1>Verandering bij Tata Steel? Stapgesprek helpt je verder.</h1>
+                     <p class="intro">Ingrijpende tijden vragen om een luisterend oor en een helder plan. Stapgesprek, een initiatief van Stichting JobOn, biedt jou als (oud-)medewerker van Tata Steel gratis en vrijwillige ondersteuning. Ontdek je mogelijkheden met een oriënterend Stapgesprek (vol is vol), praktische tools en de kracht van een netwerk.</p>
+                     <div class="hero-cta">
+                         <a href="voor-jou.html" class="btn btn-primary">Ontdek ons aanbod voor jou</a>
+                         <a href="stapgesprek.html" class="btn btn-secondary">Meer over het Stapgesprek</a>
+                     </div>
+                 </div>
+                 <div class="hero-image">
+                     <img src="images/hero-image-stap.png" alt="Hoopvol beeld van mensen die samenwerken of vooruit kijken">
+                 </div>
+             </div>
         </section>
 
         <section class="download-section accent-bg">
@@ -36,10 +36,12 @@
                     <h2>Direct aan de slag?</h2>
                     <h3>Download "Jouw Eerste Kompas na Tata Steel"</h3>
                     <p>Een praktisch stappenplan met checklist en tips om je op weg te helpen in deze nieuwe fase. Vul je e-mailadres in en ontvang het per mail.</p>
-                    <form action="#" method="post"> <label for="email-download-hp" class="sr-only">E-mailadres</label>
-                         <input type="email" id="email-download-hp" name="email" placeholder="Jouw e-mailadres" required>
-                         <button type="submit" class="btn btn-primary">Download nu</button>
-                         </form>
+                    <div class="inline-form" id="initial-download-form">
+                        <label for="email-download-hp" class="sr-only">E-mailadres</label>
+                        <input type="email" id="email-download-hp" name="email-initial" placeholder="Jouw e-mailadres" required>
+                        <button type="button" id="open-download-modal-btn" class="btn btn-primary">Vraag Download Aan</button>
+                    </div>
+                     <p id="email-error-hp" class="form-error">Voer een geldig e-mailadres in.</p>
                 </div>
                  <div class="download-image">
                      <img src="images/compass-download-cover.png" alt="Cover afbeelding Kompas Stappenplan">
@@ -48,67 +50,84 @@
         </section>
 
         <section class="offerings-section">
-            <div class="container">
-                <h2>Wat biedt Stapgesprek jou?</h2>
-                <div class="offerings-grid">
-                    <div class="offering-card">
-                        <img src="images/icon-stapgesprek.svg" alt="" class="offering-icon">
-                        <h3>Het Stapgesprek</h3>
-                        <p>Een oriënterend gesprek over jouw talenten, wensen en toekomstmogelijkheden (vol is vol, beperkte capaciteit).</p>
-                        <a href="stapgesprek.html" class="btn-link">Lees meer</a>
-                    </div>
-                    <div class="offering-card">
-                        <img src="images/icon-online-leren.svg" alt="" class="offering-icon">
-                        <h3>Online Leren & Tools</h3>
-                        <p>Praktische e-learnings, CV-check en AI-coaching, in je eigen tempo.</p>
-                        <a href="online-leren.html" class="btn-link">Ontdek de tools</a>
-                    </div>
-                     <div class="offering-card">
-                        <img src="images/icon-webinars.svg" alt="" class="offering-icon">
-                        <h3>Webinars & Experts</h3>
-                        <p>Inspirerende online sessies over o.a. solliciteren, netwerken en veerkracht.</p>
-                         <a href="online-leren.html#webinars" class="btn-link">Bekijk agenda</a>
-                    </div>
-                     <div class="offering-card">
-                        <img src="images/icon-community.svg" alt="" class="offering-icon">
-                        <h3>Community & Netwerk</h3>
-                        <p>Kom in contact met (oud-)collega's en deel ervaringen in een veilige omgeving.</p>
-                        <a href="community.html" class="btn-link">Word lid</a>
-                    </div>
-                    <div class="offering-card">
-                        <img src="images/icon-events.svg" alt="" class="offering-icon">
-                        <h3>Lokale Bijeenkomsten</h3>
-                        <p>Interesse in live workshops of netwerkevents in de regio? Laat het ons weten!</p>
-                        <a href="#lokale-events-interesse" class="btn-link">Meld interesse</a> </div>
-                </div>
-            </div>
+             <div class="container">
+                 <h2>Wat biedt Stapgesprek jou?</h2>
+                 <div class="offerings-grid">
+                    <div class="offering-card"> <img src="images/icon-stapgesprek.svg" alt="" class="offering-icon"> <h3>Het Stapgesprek</h3> <p>Een oriënterend gesprek over jouw talenten, wensen en toekomstmogelijkheden (vol is vol, beperkte capaciteit).</p> <a href="stapgesprek.html" class="btn-link">Lees meer</a> </div>
+                    <div class="offering-card"> <img src="images/icon-online-leren.svg" alt="" class="offering-icon"> <h3>Online Leren & Tools</h3> <p>Praktische e-learnings, CV-check en AI-coaching, in je eigen tempo.</p> <a href="online-leren.html" class="btn-link">Ontdek de tools</a> </div>
+                    <div class="offering-card"> <img src="images/icon-webinars.svg" alt="" class="offering-icon"> <h3>Webinars & Experts</h3> <p>Inspirerende online sessies over o.a. solliciteren, netwerken en veerkracht.</p> <a href="online-leren.html#webinars" class="btn-link">Bekijk agenda</a> </div>
+                    <div class="offering-card"> <img src="images/icon-community.svg" alt="" class="offering-icon"> <h3>Community & Netwerk</h3> <p>Kom in contact met (oud-)collega's en deel ervaringen in een veilige omgeving.</p> <a href="community.html" class="btn-link">Word lid</a> </div>
+                    <div class="offering-card"> <img src="images/icon-events.svg" alt="" class="offering-icon"> <h3>Lokale Bijeenkomsten</h3> <p>Interesse in live workshops of netwerkevents in de regio? Laat het ons weten!</p> <a href="#lokale-events-interesse" class="btn-link">Meld interesse</a> </div>
+                 </div>
+             </div>
         </section>
 
         <section class="community-section light-bg">
-            <div class="container community-content">
-                <div class="community-text">
-                    <h2>Samen Sterker: De Stapgesprek Community</h2>
-                    <p>Je staat er niet alleen voor. Sluit je aan bij de groeiende groep (oud-)Tata Steel collega's die via Stapgesprek.nl hun volgende stap zetten. Deel ervaringen, stel vragen en steun elkaar in een besloten, respectvolle omgeving.</p>
-                    <blockquote>"Het helpt enorm om te praten met mensen die in hetzelfde schuitje zitten." - Anonieme deelnemer</blockquote>
-                    <a href="community.html" class="btn btn-secondary">Word deel van de community</a>
-                </div>
-                <div class="community-visual">
-                    <img src="images/netwerkbijeenkomst.png" alt="Visualisatie van een online community of groep mensen in gesprek">
-                </div>
-            </div>
+             <div class="container community-content">
+                <div class="community-text"> <h2>Samen Sterker: De Stapgesprek Community</h2> <p>Je staat er niet alleen voor. Sluit je aan bij de groeiende groep (oud-)Tata Steel collega's die via Stapgesprek.nl hun volgende stap zetten. Deel ervaringen, stel vragen en steun elkaar in een besloten, respectvolle omgeving.</p> <blockquote>"Het helpt enorm om te praten met mensen die in hetzelfde schuitje zitten." - Anonieme deelnemer</blockquote> <a href="community.html" class="btn btn-secondary">Word deel van de community</a> </div>
+                <div class="community-visual"> <img src="images/netwerkbijeenkomst.png" alt="Visualisatie van een online community of groep mensen in gesprek"> </div>
+             </div>
         </section>
 
          <section class="jobon-power-section">
-            <div class="container">
-                <h2>De Kracht van JobOn</h2>
-                 <p>Stapgesprek.nl wordt mogelijk gemaakt door Stichting JobOn. Al meer dan 10 jaar dé landelijke community die mensen ondersteunt bij hun loopbaan. We zijn een ANBI-stichting zonder winstoogmerk, met een groot netwerk van vrijwilligers en professionals. Onze aanpak is mensgericht, praktisch en bewezen effectief.</p>
-                 <a href="over-jobon.html" class="btn btn-link">Meer over Stichting JobOn</a>
-            </div>
-        </section>
+              <div class="container"> <h2>De Kracht van JobOn</h2> <p>Stapgesprek.nl wordt mogelijk gemaakt door Stichting JobOn. Al meer dan 10 jaar dé landelijke community die mensen ondersteunt bij hun loopbaan. We zijn een ANBI-stichting zonder winstoogmerk, met een groot netwerk van vrijwilligers en professionals. Onze aanpak is mensgericht, praktisch en bewezen effectief.</p> <a href="over-jobon.html" class="btn btn-link">Meer over Stichting JobOn</a> </div>
+         </section>
 
     </main>
 
     <footer class="site-footer"></footer>
+
+    <div id="download-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Sluit venster">&times;</button>
+            <h2>Bijna klaar! Nog een paar details (optioneel)</h2>
+            <p>Je ontvangt het stappenplan op: <strong id="modal-email-display">jouw-email@voorbeeld.com</strong></p>
+            <p>Om je beter te kunnen helpen, stellen we het op prijs als je onderstaande (optionele) vragen beantwoordt.</p>
+
+            <form id="modal-download-form" action="https://formspree.io/f/mldjaanj" method="POST">
+                 <input type="hidden" id="modal-email-input" name="email">
+                 <input type="hidden" name="_subject" value="Nieuwe Stapgesprek.nl Download Aanvraag">
+
+                 <div class="form-group">
+                    <label for="modal-naam">Naam (optioneel)</label>
+                    <input type="text" id="modal-naam" name="Naam">
+                 </div>
+                 <div class="form-group">
+                    <label for="modal-functie">Functie bij TATA Steel (optioneel)</label>
+                    <input type="text" id="modal-functie" name="Functie TATA">
+                 </div>
+                  <div class="form-group">
+                    <label for="modal-jaren">Aantal jaren in dienst (optioneel)</label>
+                    <input type="number" id="modal-jaren" name="Jaren in dienst">
+                 </div>
+                 <div class="form-group">
+                     <label for="modal-opmerkingen">Vragen of opmerkingen (optioneel)</label>
+                     <textarea id="modal-opmerkingen" name="Opmerkingen" rows="4"></textarea>
+                 </div>
+
+                 <p class="privacy-note">
+                     <small>
+                         Stapgesprek.nl is een initiatief van Stichting JobOn (ANBI). Wij zijn onafhankelijk en behandelen je gegevens vertrouwelijk conform de AVG. We delen je gegevens nooit met derden zoals TATA Steel of UWV zonder jouw expliciete toestemming.
+                     </small>
+                 </p>
+
+                 <div class="modal-actions">
+                      <button type="submit" class="btn btn-primary btn-submit-modal">Ontvang Stappenplan per Mail</button>
+                 </div>
+                 <p id="modal-form-error" class="form-error"></p>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="download-success" class="modal"> <div class="modal-content success-message">
+             <button class="modal-close success-close" aria-label="Sluit venster">&times;</button>
+             <h2>Bedankt!</h2>
+             <p>Je aanvraag is goed ontvangen. Het "Kompas Stappenplan" wordt zo snel mogelijk naar je e-mailadres gestuurd.</p>
+             <p>Houd ook onze andere activiteiten in de gaten!</p>
+             <button type="button" class="btn btn-secondary success-close">Sluiten</button>
+         </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
