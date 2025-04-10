@@ -1,4 +1,4 @@
-/* css/style.css - BIJGEWERKTE VERSIE */
+/* css/style.css - BIJGEWERKTE VERSIE 2 */
 
 /* --- CSS Variabelen --- */
 :root {
@@ -9,267 +9,169 @@
     --color-text-light: #555555;
     --color-background: #FFFFFF;
     --color-background-light: #f8f9fa;
-    --color-background-accent: #EAF2FB; /* Lichte versie van accent */
+    --color-background-accent: #EAF2FB;
     --color-border: #dee2e6;
     --font-family-base: 'Lato', sans-serif;
     --container-width: 1140px;
     --border-radius: 5px;
-    --header-height: 90px; /* Iets hoger voor groter logo */
+    --header-height: 100px; /* MEER HOOGTE VOOR GROTER LOGO */
 }
 
 /* --- Basis Reset & Stijlen --- */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 100%;
-}
-
-body {
-    font-family: var(--font-family-base);
-    color: var(--color-text);
-    background-color: var(--color-background);
-    line-height: 1.6;
-    font-size: 1rem;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* ... (h1-h6, p, a, ul/ol, li, basis img styling blijven hetzelfde als voorheen) ... */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 100%; }
+body { font-family: var(--font-family-base); color: var(--color-text); background-color: var(--color-background); line-height: 1.6; font-size: 1rem; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 h1, h2, h3, h4, h5, h6 { margin-bottom: 0.8em; line-height: 1.3; font-weight: 700; color: var(--color-text); }
 h1 { font-size: clamp(2rem, 5vw, 2.5rem); } h2 { font-size: clamp(1.75rem, 4vw, 2rem); } h3 { font-size: clamp(1.3rem, 3.5vw, 1.5rem); } h4 { font-size: clamp(1.1rem, 3vw, 1.25rem); }
 p { margin-bottom: 1em; }
 a { color: var(--color-accent); text-decoration: none; transition: color 0.3s ease; }
-a:hover { color: var(--color-primary); text-decoration: underline; }
+a:hover { color: var(--color-primary); text-decoration: none; /* Underline weg bij hover algemeen? */ }
 ul, ol { margin-bottom: 1em; padding-left: 20px; }
 li { margin-bottom: 0.5em; }
 img { max-width: 100%; height: auto; display: block; vertical-align: middle; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-
 /* --- Layout --- */
-.container {
-    max-width: var(--container-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 100%;
-}
-
-section {
-    padding: 60px 0;
-}
+.container { max-width: var(--container-width); margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; width: 100%; }
+section { padding: 60px 0; }
 @media (max-width: 767px) { section { padding: 40px 0; } }
-
 .light-bg { background-color: var(--color-background-light); }
 .accent-bg { background-color: var(--color-background-accent); }
 
 /* --- Header --- */
-.site-header {
-    background-color: var(--color-background);
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    height: var(--header-height); /* Vaste hoogte */
-    display: flex; /* Gebruik flexbox om container te centreren */
-    align-items: center;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
+.site-header { background-color: var(--color-background); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; left: 0; width: 100%; z-index: 1000; height: var(--header-height); display: flex; align-items: center; }
+.header-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 
 /* Logo Styling */
-.logo.logo-center {
-    flex-grow: 0; /* Niet groeien */
-    flex-shrink: 0; /* Niet krimpen */
-    text-align: center; /* Horizontaal centreren binnen zijn ruimte */
-}
+.logo.logo-center { flex-grow: 0; flex-shrink: 0; text-align: center; }
 .logo.logo-center img {
-    max-height: 65px; /* LOGO GROTER GEMAAKT */
+    max-height: 80px; /* << LOGO GROTER GEMAAKT >> */
     width: auto;
-    display: inline-block; /* Zodat het goed centreert */
+    display: inline-block;
+    object-fit: contain; /* Voorkom vervorming */
 }
 
 /* Navigatie Styling (Gesplitst) */
-.nav-left, .nav-right {
-    flex: 1; /* Neem beschikbare ruimte */
-}
-.nav-left .nav-menu {
-    justify-content: flex-start; /* Links uitlijnen */
-}
-.nav-right .nav-menu {
-     justify-content: flex-end; /* Rechts uitlijnen */
-}
-
-.header-right-section {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Alles rechts uitlijnen */
-    flex: 1; /* Neem beschikbare ruimte */
-}
-
-.main-navigation .nav-menu {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
-}
-
-.main-navigation .nav-menu li {
-    margin: 0 15px; /* Ruimte tussen menu items */
-    position: relative; /* Nodig voor dropdown positionering */
-}
+.nav-left, .nav-right { flex: 1; }
+.nav-left .nav-menu { justify-content: flex-start; }
+.nav-right .nav-menu { justify-content: flex-end; }
+.header-right-section { display: flex; align-items: center; justify-content: flex-end; flex: 1; }
+.main-navigation .nav-menu { list-style: none; padding-left: 0; margin-bottom: 0; display: flex; align-items: center; }
+.main-navigation .nav-menu li { margin: 0 15px; position: relative; }
 
 .main-navigation .nav-menu a {
     color: var(--color-text);
     font-weight: 700;
     text-decoration: none;
-    padding: 5px 0;
-    border-bottom: 2px solid transparent;
+    padding: 8px 4px; /* Iets meer verticale padding */
+    border-bottom: 3px solid transparent; /* Iets dikkere border */
     transition: border-color 0.3s ease, color 0.3s ease;
     white-space: nowrap;
+    display: flex; /* Voor pijl alignment */
+    align-items: center;
 }
-
 .main-navigation .nav-menu a:hover,
-.main-navigation .nav-menu .current-menu-item a {
+.main-navigation .nav-menu li.active > a /* NIEUW: Actieve link styling */ {
     color: var(--color-primary);
     border-bottom-color: var(--color-primary);
     text-decoration: none;
 }
-
-/* Dropdown Styling */
-.has-dropdown > a {
-    cursor: default; /* Maak hoofdlink niet direct klikbaar indien nodig */
+/* Specifieke styling voor actieve link, kan hetzelfde zijn als hover */
+.main-navigation .nav-menu a.active {
+     color: var(--color-primary);
+     border-bottom-color: var(--color-primary);
 }
+
+
+/* Dropdown Styling (Aangepast) */
+.has-dropdown > a.dropdown-trigger {
+    cursor: pointer; /* Maak trigger klikbaar (voor eventuele JS) */
+}
+.has-dropdown span.arrow {
+    font-size: 0.7em;
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+}
+.has-dropdown:hover span.arrow {
+    transform: rotate(180deg);
+}
+
 .dropdown-menu {
-    display: none; /* Start verborgen */
+    /* Start verborgen met opacity en visibility */
+    opacity: 0;
+    visibility: hidden;
     position: absolute;
-    top: 100%; /* Direct onder parent li */
-    left: 50%; /* Begin in het midden */
-    transform: translateX(-50%); /* Centreer horizontaal */
-    min-width: 180px; /* Minimale breedte */
+    top: calc(100% + 10px); /* Iets lager onder trigger */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* Start iets lager */
+    min-width: 200px; /* Iets breder */
     background-color: var(--color-background);
-    border: 1px solid var(--color-border);
+    border: none; /* Geen border */
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Meer shadow */
     list-style: none;
     padding: 10px 0;
-    margin-top: 10px; /* Kleine ruimte tussen trigger en menu */
-    z-index: 1001; /* Boven andere header elementen */
+    margin: 0; /* Geen margin-top meer nodig */
+    z-index: 1001;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; /* Transitie toegevoegd */
 }
 /* Rechts uitlijnen voor laatste item */
-.nav-right .has-dropdown .dropdown-menu {
-    left: auto;
-    right: 0;
-    transform: none;
-}
+.nav-right .has-dropdown .dropdown-menu { left: auto; right: 0; transform: translateY(10px); /* Alleen Y transform */ }
 
-.dropdown-menu li {
-    margin: 0; /* Reset margin */
-}
-
+.dropdown-menu li { margin: 0; }
 .dropdown-menu li a {
     display: block;
-    padding: 8px 20px;
+    padding: 10px 25px; /* Meer padding */
     color: var(--color-text);
-    font-weight: normal; /* Normaal gewicht */
+    font-weight: normal;
     white-space: nowrap;
-    border-bottom: none; /* Geen border */
-}
-
-.dropdown-menu li a:hover {
-    background-color: var(--color-background-light);
-    color: var(--color-primary);
-    text-decoration: none;
     border-bottom: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.dropdown-menu li a:hover {
+    background-color: var(--color-primary); /* Groene achtergrond */
+    color: var(--color-background); /* Witte tekst */
+    text-decoration: none;
 }
 
-/* Toon dropdown bij hover op parent li */
+/* Toon dropdown bij hover op parent li (desktop) */
 .has-dropdown:hover .dropdown-menu {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* Naar definitieve positie */
+}
+.nav-right .has-dropdown:hover .dropdown-menu {
+    transform: translateY(0); /* Naar definitieve positie */
 }
 
 
-/* Taalkeuze Styling */
+/* Taalkeuze Styling (Aangepast) */
 .language-switcher {
-    margin-left: 25px;
+    margin-left: 30px; /* Meer ruimte */
     white-space: nowrap;
-    border: 1px solid var(--color-border); /* SUBTIEL KADER */
-    padding: 4px 10px; /* Padding binnen kader */
+    border: 1px solid transparent; /* Start zonder border */
+    padding: 5px 8px;
     border-radius: var(--border-radius);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
-.language-switcher:hover { /* Hover op hele blok */
+.language-switcher:hover { /* Lichte achtergrond bij hover op hele blok */
      background-color: var(--color-background-light);
-     border-color: #aaa;
 }
-
-.language-switcher a {
-    margin: 0;
-    color: var(--color-text-light);
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 4px; /* Klikgebied */
-    display: inline-block; /* Voor padding */
-    border-radius: 3px;
-}
-.language-switcher span.lang-separator {
-    color: var(--color-border);
-    margin: 0 3px;
-    font-size: 0.9rem;
-}
-.language-switcher a.lang-active {
-    font-weight: 700;
-    color: var(--color-text);
-    cursor: default;
-    text-decoration: none;
-    background-color: transparent; /* Reset eventuele hover */
-}
-.language-switcher a:not(.lang-active):hover {
-    color: var(--color-accent);
-    background-color: #e9ecef; /* Lichte achtergrond bij hover op link */
-    text-decoration: none; /* Geen underline */
-}
+.language-switcher a { margin: 0; color: var(--color-text-light); text-decoration: none; font-size: 0.9rem; padding: 5px; display: inline-block; border-radius: 3px; transition: background-color 0.2s ease, color 0.2s ease; }
+.language-switcher span.lang-separator { color: var(--color-border); margin: 0 3px; font-size: 0.9rem; }
+.language-switcher a.lang-active { font-weight: 700; color: var(--color-text); cursor: default; text-decoration: none; background-color: transparent; }
+.language-switcher a:not(.lang-active):hover { color: var(--color-accent); background-color: #e9ecef; text-decoration: none; }
 
 /* Mobiel Menu Knop */
-.menu-toggle {
-    display: none; /* Verborgen op desktop */
-    background: none;
-    border: 1px solid var(--color-text-light);
-    color: var(--color-text);
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 1.5rem; /* Iets groter voor betere tikbaarheid */
-    line-height: 1;
-    border-radius: var(--border-radius);
-    margin-left: 15px;
-}
-.menu-toggle:hover {
-    background-color: var(--color-background-light);
-}
-
+.menu-toggle { display: none; background: none; border: 1px solid var(--color-text-light); color: var(--color-text); padding: 8px 12px; cursor: pointer; font-size: 1.5rem; line-height: 1; border-radius: var(--border-radius); margin-left: 15px; }
+.menu-toggle:hover { background-color: var(--color-background-light); }
 
 /* Mobiel Navigatie Container (verborgen op desktop) */
-.mobile-navigation {
-    display: none;
-}
+.mobile-navigation { display: none; }
 
 
 /* --- Footer --- */
-/* ... (Footer styling blijft hetzelfde als voorheen) ... */
+/* ... (Footer styling blijft hetzelfde) ... */
 .site-footer { background-color: #333; color: #ccc; padding: 40px 0 20px; font-size: 0.9rem; min-height: 100px; }
 .site-footer .container { opacity: 0; transition: opacity 0.5s ease-in-out; }
 .site-footer.loaded .container { opacity: 1; }
@@ -281,280 +183,166 @@ section {
 .footer-col ul li { margin-bottom: 8px; }
 .footer-bottom { text-align: center; border-top: 1px solid #555; padding-top: 20px; font-size: 0.85rem; color: #aaa; }
 
-
 /* --- Knoppen --- */
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    border: 2px solid transparent;
-    border-radius: var(--border-radius);
-    font-weight: 700;
-    text-align: center;
+.btn { display: inline-block; padding: 12px 25px; border: 2px solid transparent; border-radius: var(--border-radius); font-weight: 700; text-align: center; text-decoration: none; cursor: pointer; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.15s ease, box-shadow 0.15s ease; font-size: 1rem; line-height: 1.5; white-space: nowrap; }
+.btn:hover {
     text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Shadow toegevoegd aan transitie */
-    font-size: 1rem;
-    line-height: 1.5;
-    white-space: nowrap;
+    transform: translateY(-3px); /* Iets meer lift */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.18); /* Iets meer schaduw */
 }
-.btn:hover { /* Algemeen hover effect */
-    text-decoration: none;
-    transform: translateY(-2px); /* Lift effect */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Schaduw bij hover */
+/* Active state voor als je klikt */
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
 
-.btn-primary {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-background);
-}
-.btn-primary:hover {
-    background-color: #58a046;
-    border-color: #58a046;
-    color: var(--color-background);
-    /* Inherit transform/shadow from .btn:hover */
-}
-
-.btn-secondary {
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-background);
-}
-.btn-secondary:hover {
-     background-color: #3a7ac0;
-     border-color: #3a7ac0;
-     color: var(--color-background);
-     /* Inherit transform/shadow from .btn:hover */
-}
-
-.btn-outline-primary {
-    background-color: transparent;
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-}
-.btn-outline-primary:hover {
-    background-color: var(--color-primary);
-    color: var(--color-background);
-    /* Inherit transform/shadow from .btn:hover */
-}
-
-.btn-link {
-     color: var(--color-accent);
-     font-weight: 700;
-     text-decoration: underline;
-     background: none;
-     padding: 0;
-     border: none;
-     display: inline;
-     box-shadow: none !important; /* Geen schaduw voor link knop */
-     transform: none !important; /* Geen lift voor link knop */
-}
-.btn-link:hover {
-    color: var(--color-primary);
-    text-decoration: underline;
-}
-
+.btn-primary { background-color: var(--color-primary); border-color: var(--color-primary); color: var(--color-background); }
+.btn-primary:hover { background-color: #58a046; border-color: #58a046; color: var(--color-background); }
+.btn-secondary { background-color: var(--color-accent); border-color: var(--color-accent); color: var(--color-background); }
+.btn-secondary:hover { background-color: #3a7ac0; border-color: #3a7ac0; color: var(--color-background); }
+.btn-outline-primary { background-color: transparent; border-color: var(--color-primary); color: var(--color-primary); }
+.btn-outline-primary:hover { background-color: var(--color-primary); color: var(--color-background); }
+.btn-link { color: var(--color-accent); font-weight: 700; text-decoration: underline; background: none; padding: 0; border: none; display: inline; box-shadow: none !important; transform: none !important; }
+.btn-link:hover { color: var(--color-primary); text-decoration: underline; }
 
 /* --- Formulieren --- */
-/* ... (Formulier styling blijft hetzelfde als voorheen) ... */
+/* ... (Formulier styling blijft hetzelfde) ... */
 input[type="text"], input[type="email"], input[type="tel"], textarea, select { padding: 12px 15px; border: 1px solid #ccc; border-radius: var(--border-radius); width: 100%; font-family: var(--font-family-base); font-size: 1rem; margin-bottom: 10px; transition: border-color 0.3s ease; }
 input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, textarea:focus, select:focus { border-color: var(--color-accent); outline: none; box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3); }
 textarea { min-height: 120px; resize: vertical; }
 label { display: block; margin-bottom: 5px; font-weight: 700; }
 
 /* --- Homepage Specifiek --- */
-/* ... (Homepage sectie styling blijft grotendeels hetzelfde als voorheen) ... */
-/* Kleine aanpassing om zeker te zijn dat content binnenkomt */
-.hero-section, .download-section, .offerings-section, .community-section, .jobon-power-section {
-    /* Bestaande padding etc. */
-}
-.hero-content, .download-content, .offerings-grid, .community-content {
-    /* Bestaande flex/grid etc. */
-}
-/* Zorg dat offering card hoogte consistent is indien nodig */
-.offerings-grid { align-items: stretch; } /* Kaarten strekken */
-.offering-card { height: 100%; } /* Neem volledige grid hoogte */
-
+/* ... (Homepage styling blijft hetzelfde) ... */
+.hero-section, .download-section, .offerings-section, .community-section, .jobon-power-section { /* padding etc. */ }
+.hero-content, .download-content, .offerings-grid, .community-content { /* flex/grid etc. */ }
+.offerings-grid { align-items: stretch; } .offering-card { height: 100%; }
 
 /* --- Responsive Design --- */
-@media (max-width: 1024px) { /* Iets eerder reageren dan 991 */
-    .main-navigation .nav-menu li {
-        margin: 0 10px; /* Minder ruimte tussen desktop items */
-    }
-    .language-switcher {
-        margin-left: 15px;
-    }
+@media (max-width: 1024px) {
+    .main-navigation .nav-menu li { margin: 0 10px; }
+    .language-switcher { margin-left: 15px; }
+    .logo.logo-center img { max-height: 70px; /* Iets kleiner op kleinere desktop */ }
+    :root { --header-height: 90px; } /* Header iets lager */
 }
 
-
 @media (max-width: 991px) {
-    .site-header {
-        height: auto; /* Hoogte auto op mobiel */
-        min-height: 70px; /* Kleinere min hoogte */
-    }
-     .header-container {
-        position: relative; /* Nodig voor absoluut gepositioneerd mobiel menu */
-    }
+    :root { --header-height: 70px; } /* Kleinere header hoogte mobiel */
+    .site-header { height: var(--header-height); }
+    .header-container { position: relative; }
 
-    /* Verberg desktop nav links/rechts en taal switcher */
-    .nav-left, .nav-right, .language-switcher {
-        display: none;
-    }
+    /* Verberg desktop nav/taal */
+    .nav-left, .nav-right, .language-switcher { display: none; }
 
-    /* Centreer logo en toon menu knop */
-    .logo.logo-center {
-       order: 1; /* Komt eerst */
-       flex-grow: 1; /* Neem ruimte in */
-       text-align: left; /* Align links op mobiel */
-       padding-left: 0; /* Reset eventuele padding */
-    }
-    .logo.logo-center img {
-       max-height: 45px; /* Iets kleiner logo op mobiel */
-       display: inline-block; /* Zorg dat het niet 100% breed wordt */
-    }
-    .header-right-section {
-        order: 2; /* Komt na logo */
-        flex: 0 0 auto; /* Neem alleen benodigde ruimte */
-        justify-content: flex-end;
-    }
-    .menu-toggle {
-        display: block; /* Toon de menu knop */
-        margin-left: 0; /* Geen extra margin meer nodig */
-    }
+    /* Logo links, knop rechts */
+    .logo.logo-center { order: 1; flex-grow: 1; text-align: left; padding-left: 0; }
+    .logo.logo-center img { max-height: 40px; /* Kleiner logo mobiel */ }
+    .header-right-section { order: 2; flex: 0 0 auto; justify-content: flex-end; }
+    .menu-toggle { display: block; margin-left: 0; }
 
-    /* Mobiel menu styling */
+    /* Mobiel menu container */
     .mobile-navigation {
-        display: block; /* Maak container zichtbaar */
+        display: block;
         position: absolute;
-        top: 100%; /* Onder de header */
-        left: 0;
-        right: 0;
+        top: var(--header-height); /* Start onder de header */
+        left: 0; right: 0;
         background-color: var(--color-background);
         border-top: 1px solid var(--color-border);
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         z-index: 999;
-        max-height: 0; /* Start hoogte 0 */
-        overflow: hidden; /* Verberg content */
-        transition: max-height 0.4s ease-in-out; /* Animatie */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
     }
-     /* Actieve staat voor mobiel menu (getoggled via JS op .nav-menu-mobile) */
-     .nav-menu-mobile.nav-active {
-        max-height: 80vh; /* Maximale hoogte (of bv. 500px) */
-        overflow-y: auto; /* Scroll indien nodig */
+     /* Actieve staat voor mobiel menu (getoggled via JS op #primary-mobile-menu) */
+     #primary-mobile-menu.nav-active { /* <<-- Let op: class op UL nu! */
+        max-height: calc(100vh - var(--header-height)); /* Max hoogte = viewport - header */
+        overflow-y: auto;
     }
 
+    .nav-menu-mobile { list-style: none; padding: 0; margin: 0; } /* Reset padding/margin */
+    .nav-menu-mobile li { margin: 0; border-bottom: 1px solid #eee; }
+    .nav-menu-mobile li:last-child { border-bottom: none; }
+    .nav-menu-mobile a { display: block; padding: 15px 20px; color: var(--color-text); text-decoration: none; font-weight: 700; }
+    .nav-menu-mobile a:hover { background-color: var(--color-background-light); color: var(--color-primary); }
+    /* Actieve link in mobiel menu */
+    .nav-menu-mobile li.active > a {
+        color: var(--color-background);
+        background-color: var(--color-primary);
+    }
 
-    .nav-menu-mobile {
-        list-style: none;
-        padding: 15px 0;
-        margin: 0;
-    }
-    .nav-menu-mobile li {
-       margin: 0;
-       border-bottom: 1px solid #eee;
-    }
-     .nav-menu-mobile li:last-child {
-         border-bottom: none;
-     }
-
-    .nav-menu-mobile a {
-        display: block;
-        padding: 12px 20px;
-        color: var(--color-text);
-        text-decoration: none;
-        font-weight: 700;
-    }
-    .nav-menu-mobile a:hover {
-        background-color: var(--color-background-light);
-        color: var(--color-primary);
-        text-decoration: none;
-    }
 
     /* Dropdown binnen mobiel menu */
+    .has-dropdown-mobile .dropdown-trigger-mobile {
+        display: flex; /* Om pijl naast tekst te krijgen */
+        justify-content: space-between; /* Pijl naar rechts */
+        align-items: center;
+        cursor: pointer; /* Maak klikbaar */
+    }
+     .has-dropdown-mobile span.arrow {
+         font-size: 0.8em;
+         transition: transform 0.3s ease;
+     }
+     /* Roteer pijl als dropdown open is (via .active class op li) */
+     .has-dropdown-mobile.active .dropdown-trigger-mobile span.arrow {
+         transform: rotate(180deg);
+     }
+
     .has-dropdown-mobile .dropdown-menu-mobile {
          list-style: none;
-         padding: 5px 0 10px 30px; /* Inspringen */
+         padding: 0;
          margin: 0;
          background-color: var(--color-background-light); /* Lichte achtergrond */
-         display: block; /* Standaard zichtbaar binnen mobiel */
+         /* Start verborgen (wordt getoond via JS door display aan te passen of max-height) */
+         /* display: none; wordt nu door JS geregeld, of gebruik max-height transitie */
+         max-height: 0;
+         overflow: hidden;
+         transition: max-height 0.3s ease-out;
     }
-     .has-dropdown-mobile .dropdown-menu-mobile li {
-         border: none; /* Geen borders hier */
-         margin-bottom: 5px;
+     /* Toon mobiele dropdown als parent li .active heeft */
+     .has-dropdown-mobile.active .dropdown-menu-mobile {
+        max-height: 300px; /* Ruime max hoogte */
      }
-      .has-dropdown-mobile .dropdown-menu-mobile a {
-          padding: 5px 15px;
+
+     .has-dropdown-mobile .dropdown-menu-mobile li { border: none; margin: 0; }
+     .has-dropdown-mobile .dropdown-menu-mobile a {
+          padding: 10px 20px 10px 40px; /* Extra inspringen */
           font-weight: normal;
           font-size: 0.95rem;
+          border-top: 1px solid #eee; /* Lijn tussen subitems */
       }
-       .has-dropdown-mobile > a { /* Hoofd 'Info' link */
-           /* Optioneel: andere stijl om aan te geven dat het een groep is */
+       .has-dropdown-mobile .dropdown-menu-mobile li:first-child a {
+           border-top: none; /* Geen lijn boven eerste subitem */
        }
+        .has-dropdown-mobile .dropdown-menu-mobile li.active > a {
+             background-color: var(--color-accent); /* Andere highlight kleur? */
+             color: var(--color-background);
+        }
 
-
-     /* Andere responsive aanpassingen (zoals eerder) */
-     .hero-content, .download-content, .community-content { flex-direction: column; text-align: center; }
-     .hero-text, .download-text, .community-text { flex-basis: auto; width: 100%; }
-     .hero-image, .download-image, .community-visual { flex-basis: auto; max-width: 80%; margin: 30px auto 0; }
-     .download-section form { justify-content: center; flex-direction: column; align-items: stretch; }
-     .download-section input[type="email"], .download-section button { flex-grow: 0; flex-shrink: 1; width: 100%; }
-     .footer-content { flex-direction: column; text-align: center; }
-     .footer-col { flex-basis: 100%; min-width: unset; margin-bottom: 30px; }
-     .footer-col:last-child { margin-bottom: 0; }
+    /* Andere responsive aanpassingen */
+    .hero-content, .download-content, .community-content { flex-direction: column; text-align: center; }
+    .hero-text, .download-text, .community-text { flex-basis: auto; width: 100%; }
+    .hero-image, .download-image, .community-visual { flex-basis: auto; max-width: 80%; margin: 30px auto 0; }
+    .download-section form { justify-content: center; flex-direction: column; align-items: stretch; }
+    .download-section input[type="email"], .download-section button { flex-grow: 0; flex-shrink: 1; width: 100%; }
+    .footer-content { flex-direction: column; text-align: center; }
+    .footer-col { flex-basis: 100%; min-width: unset; margin-bottom: 30px; }
+    .footer-col:last-child { margin-bottom: 0; }
 }
 
 @media (max-width: 767px) {
-    /* Specifieke aanpassingen voor kleinere mobiele schermen */
     h1 { font-size: 1.8rem; } h2 { font-size: 1.5rem; } h3 { font-size: 1.2rem; }
     .hero-content, .download-content, .community-content { gap: 20px; }
     .hero-text .intro { font-size: 1rem; }
-    .hero-cta .btn { width: 100%; margin-right: 0; margin-bottom: 15px; }
-    .hero-cta .btn:last-child { margin-bottom: 0; }
+    .hero-cta .btn { width: 100%; margin-right: 0; margin-bottom: 15px; } .hero-cta .btn:last-child { margin-bottom: 0; }
     .offerings-grid { grid-template-columns: 1fr; }
     .download-image { max-width: 200px; }
 }
 
-/* Voeg hier eventuele extra styling toe voor specifieke pagina-elementen */
-/* Bijv. styling voor resource cards, webinar list, etc. uit vorige voorbeelden indien nodig */
-
-.resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.resource-card { background-color: var(--color-background); border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
-.resource-card img { width: 100%; height: 180px; object-fit: cover; } /* Vaste hoogte voor thumbnails */
-.resource-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-.resource-content h3 { font-size: 1.2rem; margin-bottom: 10px; }
-.resource-content p { flex-grow: 1; margin-bottom: 15px; font-size: 0.95rem; color: var(--color-text-light); }
-.resource-content .btn { margin-top: auto; align-self: flex-start; }
-
-.webinar-list { list-style: none; padding-left: 0; }
-.webinar-item { display: flex; align-items: center; gap: 20px; background-color: var(--color-background); padding: 15px 20px; border-radius: var(--border-radius); margin-bottom: 15px; box-shadow: 0 1px 5px rgba(0,0,0,0.06); flex-wrap: wrap; }
-.webinar-date { text-align: center; font-size: 0.9rem; color: var(--color-primary); flex-shrink: 0; }
-.webinar-info { flex-grow: 1; }
-.webinar-info h4 { font-size: 1.15rem; margin-bottom: 5px; }
-.webinar-info p { margin-bottom: 0; font-size: 0.9rem; color: var(--color-text-light); }
-.webinar-action { flex-shrink: 0; margin-left: auto; padding-left: 15px; /* Voorkom plakken bij wrap */}
-@media (max-width: 767px) { .webinar-item { flex-direction: column; align-items: flex-start; gap: 10px; } .webinar-action { margin-left: 0; margin-top: 10px; width: 100%;} .webinar-action .btn { width: 100%; text-align: center; } }
-
-.content-columns { display: flex; gap: 40px; align-items: center; }
-.content-columns .content-text { flex: 1 1 55%; }
-.content-columns .content-visual { flex: 1 1 45%; text-align: center; }
-.content-columns.reverse { flex-direction: row-reverse; }
-@media (max-width: 767px) { .content-columns, .content-columns.reverse { flex-direction: column; text-align: center; } .content-columns .content-text, .content-columns .content-visual { flex-basis: auto; width: 100%; } .content-columns .content-visual { margin-top: 20px; max-width: 80%; margin-left: auto; margin-right: auto;} }
-
-.options-grid, .benefits-grid, .values-grid, .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px;}
-.option-card, .benefit-item, .value-item, .testimonial-card { background: var(--color-background); padding: 25px; border-radius: var(--border-radius); box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
-.value-item h4 { color: var(--color-accent); margin-bottom: 8px; }
-.testimonial-card blockquote { font-style: italic; border-left: 3px solid var(--color-secondary); padding-left: 15px; margin-bottom: 10px; }
-.testimonial-card cite { font-style: normal; font-weight: bold; font-size: 0.9rem; color: var(--color-text-light); display: block; text-align: right; }
-
-.contact-layout { display: flex; gap: 40px; flex-wrap: wrap; }
-.contact-form-wrapper { flex: 2 1 500px; } /* Neem meer ruimte */
-.contact-details { flex: 1 1 300px; background-color: var(--color-background-light); padding: 25px; border-radius: var(--border-radius); }
-.contact-details h2 { margin-bottom: 15px; font-size: 1.4rem; }
-.contact-details p { margin-bottom: 15px; line-height: 1.7; }
-.contact-details strong { color: var(--color-text); }
-.form-group { margin-bottom: 20px; }
-
-.inline-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center;}
-.inline-form input[type="email"] { flex-grow: 1; margin-bottom: 0; min-width: 200px;}
-.inline-form button { flex-shrink: 0; }
-@media (max-width: 767px) { .inline-form { flex-direction: column; align-items: stretch;} }
+/* ... (Rest van component styling zoals resource-card, webinar-list etc. blijft hetzelfde) ... */
+.resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; } .resource-card { background-color: var(--color-background); border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; flex-direction: column; } .resource-card img { width: 100%; height: 180px; object-fit: cover; } .resource-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; } .resource-content h3 { font-size: 1.2rem; margin-bottom: 10px; } .resource-content p { flex-grow: 1; margin-bottom: 15px; font-size: 0.95rem; color: var(--color-text-light); } .resource-content .btn { margin-top: auto; align-self: flex-start; }
+.webinar-list { list-style: none; padding-left: 0; } .webinar-item { display: flex; align-items: center; gap: 20px; background-color: var(--color-background); padding: 15px 20px; border-radius: var(--border-radius); margin-bottom: 15px; box-shadow: 0 1px 5px rgba(0,0,0,0.06); flex-wrap: wrap; } .webinar-date { text-align: center; font-size: 0.9rem; color: var(--color-primary); flex-shrink: 0; } .webinar-info { flex-grow: 1; } .webinar-info h4 { font-size: 1.15rem; margin-bottom: 5px; } .webinar-info p { margin-bottom: 0; font-size: 0.9rem; color: var(--color-text-light); } .webinar-action { flex-shrink: 0; margin-left: auto; padding-left: 15px; } @media (max-width: 767px) { .webinar-item { flex-direction: column; align-items: flex-start; gap: 10px; } .webinar-action { margin-left: 0; margin-top: 10px; width: 100%;} .webinar-action .btn { width: 100%; text-align: center; } }
+.content-columns { display: flex; gap: 40px; align-items: center; } .content-columns .content-text { flex: 1 1 55%; } .content-columns .content-visual { flex: 1 1 45%; text-align: center; } .content-columns.reverse { flex-direction: row-reverse; } @media (max-width: 767px) { .content-columns, .content-columns.reverse { flex-direction: column; text-align: center; } .content-columns .content-text, .content-columns .content-visual { flex-basis: auto; width: 100%; } .content-columns .content-visual { margin-top: 20px; max-width: 80%; margin-left: auto; margin-right: auto;} }
+.options-grid, .benefits-grid, .values-grid, .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px;} .option-card, .benefit-item, .value-item, .testimonial-card { background: var(--color-background); padding: 25px; border-radius: var(--border-radius); box-shadow: 0 2px 8px rgba(0,0,0,0.07); } .value-item h4 { color: var(--color-accent); margin-bottom: 8px; } .testimonial-card blockquote { font-style: italic; border-left: 3px solid var(--color-secondary); padding-left: 15px; margin-bottom: 10px; } .testimonial-card cite { font-style: normal; font-weight: bold; font-size: 0.9rem; color: var(--color-text-light); display: block; text-align: right; }
+.contact-layout { display: flex; gap: 40px; flex-wrap: wrap; } .contact-form-wrapper { flex: 2 1 500px; } .contact-details { flex: 1 1 300px; background-color: var(--color-background-light); padding: 25px; border-radius: var(--border-radius); } .contact-details h2 { margin-bottom: 15px; font-size: 1.4rem; } .contact-details p { margin-bottom: 15px; line-height: 1.7; } .contact-details strong { color: var(--color-text); } .form-group { margin-bottom: 20px; }
+.inline-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center;} .inline-form input[type="email"] { flex-grow: 1; margin-bottom: 0; min-width: 200px;} .inline-form button { flex-shrink: 0; } @media (max-width: 767px) { .inline-form { flex-direction: column; align-items: stretch;} }
